@@ -1,0 +1,70 @@
+<center></center>
+<script setup>
+import { ref } from 'vue'
+
+let msg = "Hallo Dunia"
+let message = "Ini warna merah"
+let rawHtml = "<li>Gimana Kabarmu lek?</li>"
+
+
+</script>
+
+<template>
+  <div id="app">
+    <h1>{{ msg }}</h1>
+    <span v-html="message" style="color: red"></span> <br>
+    <span v-html="rawHtml"></span> <br>
+    <button :disabled="isButtonDisabled" onclick="alert('mana hutang mu?')">Baek</button>
+    <button :disabled="isButtonDisabled" onclick="alert('kabar baik? tapi hutang ga dibayar? MANA PATEN')">Allhamdulillah lek</button> <br>
+    
+    <input type="email" placeholder="Masukkan email anda"> <br>
+    <input type="password" placeholder="Masukkan password"> <br>
+
+<br>
+    <table border="1">
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th>Alamat</th>
+        <th>Jenis Kelamin</th>
+      </tr>
+
+      <tr>
+        <th>1</th>
+        <th>Asep</th>
+        <th>XII RPL 2</th>
+        <th>Jln Cikadut</th>
+        <th>Laki-laki</th>
+        </tr>
+        <tr>
+          <th>2</th>
+          <th>Agus</th>
+          <th>XII RPL 2</th>
+          <th>Jln Banteng</th>
+          <th>Laki-laki</th>
+        </tr>
+       <tr>
+        <th>3</th>
+        <th>Anih</th>
+        <th>XII RPL 2</th>
+        <th>Jln Cikiih</th>
+        <th>Perempuan</th>
+       </tr>
+        <tr>
+          <th>4</th>
+        <th>Amoy</th>
+        <th>XII RPL 2</th>
+        <th>Jln Amburadul</th>
+        <th>Perempuan</th>
+      </tr>
+      <tr>
+        <th>5</th>
+        <th>Acih</th>
+        <th>XII RPL 2</th>
+        <th>Jln Politik</th>
+        <th>Perempuan</th>
+      </tr>
+    </table>
+  </div>
+</template>

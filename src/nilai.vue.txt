@@ -1,0 +1,119 @@
+<template>
+  <div>
+    <h2>Formulir</h2>
+    <form @submit.prevent="submitForm">
+      <label for="">Nama</label>
+      <input class="{'is-invalid' :isInvalidName}" type="text" name="name" v-model="kontak.name">
+      <div v-if="isInvalidName" class="error-message"></div>
+      <br>
+      <label for="">Kelas</label>
+      <input class="{'is-invalid' :isInvalidName}" type="text" name="name" v-model="kontak.kelas">
+      <div v-if="isInvalidName" class="error-message"></div>
+      <br>
+      <label for="">Alamat</label>
+      <input class="{'is-invalid' :isInvalidName}" type="text" name="name" v-model="kontak.alamat">
+      <div v-if="isInvalidName" class="error-message"></div>
+      <br>
+      <label for="">Nilai mtk</label>
+      <input class="{'is-invalid' :isInvalidName}" type="number" name="name" v-model="kontak.nilaimtk">
+      <div v-if="isInvalidName" class="error-message"></div>
+      <br>
+      <label for="">Nilai ipa</label>
+      <input class="{'is-invalid' :isInvalidName}" type="number" name="name" v-model="kontak.nilaiipa">
+      <div v-if="isInvalidName" class="error-message"></div>
+      <br>
+      <label for="">Nilai indo</label>
+      <input class="{'is-invalid' :isInvalidName}" type="number" name="name" v-model="kontak.nilaiindo">
+      <div v-if="isInvalidName" class="error-message"></div>
+      
+      <button type="submit">Simpan</button>
+    </form> <br>
+    <div v-if="showResult">
+      nama : {{ name }} <br>
+      alamat : {{ alamat }} <br>
+      kelas : {{ kelas }} <br>
+      nilai mtk : {{ nilaimtk }} <br>
+      nilai ipa : {{ nilaiipa }} <br>
+      nilai indo : {{ nilaiindo }} <br>
+      total nilai: {{ nilaimtk + nilaiipa + nilaiindo }} <br>
+      status : {{ nilaimtk + nilaiipa + nilaiindo >= 240 ? 'lulus' : 'tidak lulus' }} <br>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  data() {
+    return {
+      kontak: {
+        nama: '',
+        kelas: '',
+        alamat: '',
+        nilaimtk: '',
+        nilaiipa: '',
+        nilaiindo: '',
+      },
+      showResult: ref(false),
+      nama: ref(''),
+      kelas: ref(''),
+      alamat: ref(''),
+      nilaimtk: ref(''),
+      nilaiipa: ref(''),
+      nilaiindo: ref(''),
+      total: 0,
+
+    };
+  },
+  computed: {
+    isInvalidName() {
+      return this.kontak.nama.length <= 1;
+    },
+    isInvalidKelas() {
+      return this.kontak.kelas.length <= 1
+    },
+    isInvalidAlamat() {
+      return this.kontak.alamat.length <= 1;
+    },
+    isInvalidNilaimtk() {
+      return this.kontak.nilaimtk.length <= 1;
+    },
+    isInvalidNilaiipa() {
+      return this.kontak.nilaiipa.length <= 1;
+    },
+    isInvalidNilaiindo() {
+      return this.kontak.nilaiindo.length <= 1;
+    },
+  },
+  methods: {
+    submitForm() {
+      this.nama = this.kontak.nama;
+      this.kelas = this.kontak.kelas;
+      this.alamat = this.kontak.alamat;
+      this.nilaimtk = this.kontak.nilaimtk;
+      this.nilaiipa = this.kontak.nilaiipa;
+      this.nilaiindo = this.kontak.nilaiindo;
+      this.total = parseInt(this.nilaimtk) + parseInt(this.nilaiipa) + parseInt(this.nilaiindo)
+      this.showResult = true;
+      this.isInvalidKelas = false;
+      this.isInvalidName = false
+    },
+  },
+};
+</script>
+
+<style>
+h2 {
+  color: blue;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+.is-invalid {
+  border-color: red;
+}
+</style>
